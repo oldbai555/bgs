@@ -6,9 +6,14 @@ import (
 	"github.com/oldbai555/lbtool/log"
 )
 
+const (
+	AgentByNew   = "NewAgent"
+	AgentByClose = "CloseAgent"
+)
+
 func init() {
-	skeleton.RegisterChanRPC("NewAgent", rpcNewAgent)
-	skeleton.RegisterChanRPC("CloseAgent", rpcCloseAgent)
+	skeleton.RegisterChanRPC(AgentByNew, rpcNewAgent)
+	skeleton.RegisterChanRPC(AgentByClose, rpcCloseAgent)
 }
 
 // agent 被创建时

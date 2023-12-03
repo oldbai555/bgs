@@ -7,6 +7,7 @@ import (
 	"github.com/oldbai555/bgs/pkg/tool"
 	"github.com/oldbai555/bgs/proto/pb"
 	"github.com/oldbai555/bgs/svr/impl/engine"
+	"github.com/oldbai555/lbtool/utils"
 )
 
 type Processor struct {
@@ -56,7 +57,7 @@ func (p *Processor) Route(msg interface{}, userData interface{}) error {
 		return fmt.Errorf("invalid processor data")
 	}
 
-	cmdId := tool.Make64(message.ProtoL, message.ProtoH)
+	cmdId := utils.Make64(message.ProtoL, message.ProtoH)
 	msgType, ok := p.cmd2SvrType[cmdId]
 	if !ok {
 		return fmt.Errorf("protoH %d , protoL %d not registered", message.ProtoH, message.ProtoL)

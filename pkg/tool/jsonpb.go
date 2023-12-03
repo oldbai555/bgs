@@ -25,5 +25,5 @@ func Marshal(val proto.Message) ([]byte, error) {
 		log.Errorf("err:%v", err)
 		return nil, err
 	}
-	return buf, nil
+	return w.Bytes(), nil
 }

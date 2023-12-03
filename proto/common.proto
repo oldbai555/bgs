@@ -8,9 +8,8 @@ option go_package = "/pb";
 enum ServerType {
     ServerTypeNil = 0;
     ServerTypeClient = 1; // 客户端
-    ServerTypeAuthSvr = 2;// 认证服
-    ServerTypeGameSvr = 3; // 游戏服
-    ServerTypeLocalSceneSvr = 4;// 本地场景服
+    ServerTypeGameSvr = 2; // 游戏服
+    ServerTypeLocalSceneSvr = 3;// 本服场景
 }
 
 // 协议号

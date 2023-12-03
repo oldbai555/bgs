@@ -19,12 +19,9 @@
             password: "123456",
         });
         const json = {
-            server_type: 2,
-            message: {
-                proto_h: 2,
-                proto_l: 1,
-                data: jsonString,
-            }
+            proto_h: 2,
+            proto_l: 1,
+            data: jsonString,
         };
         const goServerJson = JSON.stringify(json);
         doSend(goServerJson);
@@ -91,6 +88,7 @@
     }
 
     function onMessage(evt) {
+        console.log(evt)
         const filrReader = new FileReader();
         filrReader.onload = function () {
             const arrayBuffer = this.result;
@@ -102,7 +100,7 @@
     }
 
     function onError(evt) {
-        console.log(evt.data);
+        console.log(evt);
     }
 
     function doSend(message) {

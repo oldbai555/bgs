@@ -4,7 +4,7 @@ import (
 	"github.com/name5566/leaf"
 	"github.com/oldbai555/bgs/svr/impl/conf"
 	"github.com/oldbai555/bgs/svr/impl/moude"
-	"github.com/oldbai555/bgs/svr/impl/msg"
+	"github.com/oldbai555/bgs/svr/impl/processor"
 	"github.com/oldbai555/lbtool/log"
 
 	"github.com/urfave/cli/v2"
@@ -26,7 +26,7 @@ func Run(ctx *cli.Context) error {
 	//	return err
 	//}
 
-	msg.InitMsgProcess()
+	processor.Init()
 
 	leaf.Run(moude.Modules()...)
 	return nil

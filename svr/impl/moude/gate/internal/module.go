@@ -3,7 +3,7 @@ package internal
 import (
 	"github.com/name5566/leaf/gate"
 	"github.com/oldbai555/bgs/svr/impl/conf"
-	"github.com/oldbai555/bgs/svr/impl/moude/game"
+	"github.com/oldbai555/bgs/svr/impl/moude/auth"
 	"github.com/oldbai555/bgs/svr/impl/msg"
 )
 
@@ -23,7 +23,7 @@ func (m *Module) OnInit() {
 		TCPAddr:         conf.Server.TCPAddr,
 		LenMsgLen:       conf.LenMsgLen,
 		LittleEndian:    conf.LittleEndian,
-		Processor:       msg.Processor, // 指向全局的processor
-		AgentChanRPC:    game.ChanRPC,  // 指向游戏模块的AgentChanRPC
+		Processor:       msg.GetSingeProcess(), // 指向全局的processor
+		AgentChanRPC:    auth.ChanRPC,          // 指向认证模块的AgentChanRPC
 	}
 }

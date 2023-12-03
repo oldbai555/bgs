@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+message ModelAccount {
+    uint32 id = 1;
+
+    string username = 2;
+    string password = 3;
+
+    string last_login_ip = 4;
+    uint32 last_login_at = 5;
+}
+
+message ModelService {
+    uint64 id = 1;
+    uint32 open_at = 2;
+}
+
+message ModelPlatform {
+    uint64 id = 1;
+}
+
+message ModelActor {
+    message MainData {
+        uint32 nickname = 1;
+        uint32 sex = 2;
+        uint32 job = 3;
+        uint32 head = 4;
+        uint32 head_frame = 5;
+        uint32 combat_power = 6;
+
+        uint32 last_login_at = 10;
+    }
+
+    message SysData {
+
+    }
+
+    uint64 id = 1;
+    uint64 account_id = 2;
+    uint64 srv_id = 3;
+    uint64 pf_id = 4;
+
+    MainData main_data = 5;
+    SysData sys_data = 6;
+}

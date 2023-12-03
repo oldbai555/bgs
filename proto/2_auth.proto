@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+// 请求登陆
+message C2S_2_1 {
+    string username = 1;
+    string password = 2;
+}
+
+// 下发登陆成功
+message S2C_2_1 {
+    string username = 1;
+    string password = 2;
+}

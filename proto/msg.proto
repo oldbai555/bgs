@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+message Event {
+    uint32 server_type = 1;
+    Message message = 2;
+}
+
+message Message {
+    uint32 proto_h = 1;
+    uint32 proto_l = 2;
+    string data = 3; // S2C or C2S msg
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+enum ErrCode {
+    ErrCodeNil = 0;
+    ErrNotFoundHandle =  1;
+    ErrNotFoundConf = 2;
+    ErrInvalidArgs = 3;
+    ErrSystemError = 4;
+    ErrLogicError = 5;
+}
+
+// 下发错误信息
+message S2C_1_1 {
+    uint32 err_code = 1;
+    string msg = 2;
+}

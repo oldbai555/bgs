@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+// 底层数据结构存放
+
+message Quest {
+    uint32 target_id = 1;
+    repeated uint32 process = 2;
+}
+
+message QuestTarget {
+    uint32 id = 1;
+    repeated uint32 ids = 2;
+    uint32 count = 3;
+}

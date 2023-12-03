@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+// 通用数据结构存放
+
+// 服务类型
+enum ServerType {
+    ServerTypeNil = 0;
+    ServerTypeClient = 1; // 客户端
+    ServerTypeAuthSvr = 2;// 认证服
+    ServerTypeGameSvr = 3; // 游戏服
+    ServerTypeLocalSceneSvr = 4;// 本地场景服
+}
+
+// 协议号
+enum ProtocolNum {
+    ProtocolNumNil = 0;
+    ProtocolCommon = 1; // 通用协议号
+    ProtocolAuth = 2; // 授权
+    ProtocolQuest = 3; // 任务
+    ProtocolSkill = 4; // 技能
+}

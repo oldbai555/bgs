@@ -1,18 +1,32 @@
 package msg
 
 import (
-	"github.com/oldbai555/bgs/svr/impl/processor"
+	"github.com/oldbai555/bgs/pkg/processor"
+	"github.com/oldbai555/bgs/proto/pb"
+	"github.com/oldbai555/bgs/svr/impl/moude/auth"
+	"github.com/oldbai555/bgs/svr/impl/moude/game"
+	"sync"
 )
 
 // 消息注册使用
 
-var Processor *processor.Processor
+var process *processor.Processor
+var once sync.Once
 
-func init() {
-	Processor = processor.NewProcessor()
-	for i := range msgList {
-		Processor.Register(msgList[i])
-	}
+func InitMsgProcess() {
+	singeProcess := GetSingeProcess()
+	singeProcess.Register(pb.ServerType_ServerTypeAuthSvr)
+	singeProcess.SetRouter(pb.ServerType_ServerTypeAuthSvr, auth.ChanRPC)
+
+	singeProcess.Register(pb.ServerType_ServerTypeGameSvr)
+	singeProcess.SetRouter(pb.ServerType_ServerTypeGameSvr, game.ChanRPC)
 }
 
-var msgList []interface{}
+func GetSingeProcess() *processor.Processor {
+	if process == nil {
+		once.Do(func() {
+			process = processor.NewProcessor()
+		})
+	}
+	return process
+}
